@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {App, Pageone, PageThree} from './App';
-import { render } from '@testing-library/react';
+import App from './App';
+import Pageone from './App.js';
+import { render, fireEvent } from '@testing-library/react';
+import { getByTestId } from '@testing-library/dom';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
@@ -10,7 +12,11 @@ it('renders without crashing', () => {
 });
 
 test('Page one renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Pageone />, div); //'div' is target container that component renders in
-  ReactDOM.unmountComponentAtNode(div);
+  const switch_page = jest.fn()
+  const set_coordinates = jest.fn()
+  
+  const {getByTestId} = render(<Pageone pagestate={1} switch_page={switch_page}/>)
+
+  fireEvent.click(getByTestId('pageChange'))
+  expect(changePage).toHaveBeenCalled(1)
 });
