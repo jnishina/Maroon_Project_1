@@ -1,9 +1,9 @@
 import React, { useState, useEffect} from 'react';
+import Autocomplete from 'react-google-autocomplete';
 import "rbx/index.css";
 import {Container,Title } from "rbx";
 import firebase from 'firebase/app';
 import 'firebase/database';
-import Autocomplete from 'react-google-autocomplete';
 
 import InputLabel from '@material-ui/core/InputLabel';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -256,4 +256,4 @@ old grid tile code
     </div>
 */
 
-export default App;
+export default {App, Pageone, PageThree};
