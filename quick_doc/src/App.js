@@ -231,4 +231,4 @@ const App =() => {
   
 }
 
-export default {App, Pageone, PageThree};
+export default App;
