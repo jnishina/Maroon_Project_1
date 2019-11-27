@@ -230,30 +230,5 @@ const App =() => {
   }
   
 }
-/*
-old grid tile code
-    // <FilterMenu/>
-    <div className={styles.root}>
-      <GridList cellHeight={'auto'} cellWidth={50} className={styles.gridList}>
-        <GridListTile key="Subheader" cols={2}>
-          <ListSubheader component="h1">Here is your list of Doctors</ListSubheader>
-        </GridListTile>
-        {doctors.map(doctor => (
-          <GridListTile key={doctor.profile.image_url}>
-            <img src={doctor.profile.image_url}/>
-            <GridListTileBar
-              title={doctor.profile.first_name+ " " + doctor.profile.last_name}
-              subtitle={<span>{doctor.profile.title}</span>}
-              actionIcon={
-                <IconButton aria-label={`info about ${doctor.profile.first_name}`} onClick={function(event){settingdoctor.setdoc(doctor.profile);pagestate.setpage(3)}} className={styles.icon}>
-                  <InfoIcon />
-                </IconButton>
-              }
-            />
-          </GridListTile>
-        ))}
-      </GridList>
-    </div>
-*/
 
 export default {App, Pageone, PageThree};
