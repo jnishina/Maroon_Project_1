@@ -156,6 +156,7 @@ const Pageone = ({pagestate, coordinatestate}) => {
   return(
     <Container className={classes.searchBar} align="center">
     <Autocomplete
+        data-cy="autocomplete"
         className={classes.searchInput}
         // style={{width: "70%", font:""}}
         onPlaceSelected={(place) => {
