@@ -142,6 +142,9 @@ const pageOneStyles = makeStyles(theme => ({
     fontFamily: "Helvetica",
     fontSize: 16,
   },
+  text: {
+    marginTop: 80
+  }
 }));
 
 const Pageone = ({pagestate, coordinatestate}) => {
@@ -167,7 +170,7 @@ const Pageone = ({pagestate, coordinatestate}) => {
         types={[]}
         componentRestrictions={{country: "usa"}}
     />
-    <Button data-testid="pageChange" size = "large" onClick = {switch_page}>
+    <Button data-cy="submit" data-testid="pageChange" size = "large" onClick = {switch_page}>
       Search
     </Button>
     </Container>
@@ -187,7 +190,7 @@ const App =() => {
   const [coordinates, setcoordinates] = React.useState("")
   const [json, setjson] = React.useState({meta: {}, data: []});
   const [doc,setdoc] = React.useState('');
-  const url = 'apiData/exampleData.json'
+  const url = ''
   //const url = 'https://api.betterdoctor.com/2016-03-01/doctors?location='+ coordinates.lat + coordinates.lng + '100&skip=2&limit=10&user_key=e98def16c263c71592c3c2f74e24097a';
 
   useEffect(() => {
@@ -213,11 +216,25 @@ const App =() => {
     );
   }
   else if (page == 2) {
-    return (
-      <Container>
-        <FilterMenu pagestate = {{page,setpage}} doctors={json.data} settingdoctor = {{doc,setdoc}}/>
-      </Container>
-    );
+    if (json.data.length != 0) {
+      return (
+        <Container>
+          <FilterMenu pagestate = {{page,setpage}} doctors={json.data} settingdoctor = {{doc,setdoc}}/>
+        </Container>
+      );
+    }
+    else {
+      return (
+        <Container>
+          <AppBar>
+            <Title align="center" className={classes.title}>
+              QuickDoc
+            </Title>
+          </AppBar>
+          <h1 data-cy="wrongpage" className={classes.text}>Please enter valid address</h1>
+        </Container>
+      );
+    }
   }
   else if (page == 3) {
     return (
